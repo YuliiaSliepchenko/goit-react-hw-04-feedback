@@ -1,11 +1,21 @@
 import PropTypes from 'prop-types';
 import s from './FeedbackOptions.module.css';
 
-export const FeedbackOptions = ({options,onClick}) => {
+
+const feedBackStatus = ['good', 'neutral', 'bad'];
+
+export default function FeedbackOptions(props) {
+    const { callback } = props;
     return (
         <div className={s.btn_item}>
-        {options.map(name => (
-            <button className={s.btn} key={name} onClick={() => onClick(name)}>{name}</button>
+        {feedBackStatus.map(name => (
+            <button
+                className={s.btn}
+                key={name}
+                onClick={() => callback(name)}
+            >
+                {name}
+            </button>
           ))}  
           </div>  
     );
@@ -13,7 +23,6 @@ export const FeedbackOptions = ({options,onClick}) => {
 
 
 FeedbackOptions.propTypes = {
-     options: PropTypes.arrayOf(PropTypes.string).isRequired,
-    onClick: PropTypes.func.isRequired,
+    callback: PropTypes.func.isRequired,
 }
 

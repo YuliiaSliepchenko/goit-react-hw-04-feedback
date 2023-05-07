@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const Notification = ({message}) => {
+export default function Notification({message}){
 return <h2>{message}</h2>
 }
 

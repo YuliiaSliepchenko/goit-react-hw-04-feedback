@@ -1,27 +1,33 @@
-import React from 'react';
+// import React from 'react';
 import PropTypes from 'prop-types';
  
-import {countTotalFeedback} from '../helpers/countTotalFeedback';
-import {countPositiveFeedbackPercentage} from '../helpers/countPositsvePersage';
+// import {countTotalFeedback} from '../helpers/countTotalFeedback';
+// import {countPositiveFeedbackPercentage} from '../helpers/countPositsvePersage';
 import s from './Statistics.module.css';
 
-export const Statistics = ({options,state}) => {
-    
-
+export default function Statistics(props) {
+    const { good, neutral, bad, total, positivePercentage } =props
     return( 
-    
+    <>
     <div className={s.statis}>
-        {options.map(name => (
-         <span className={s.item_statis} key={name}>
-           {name}:{state[name]}
-           </span>
-            ))} 
-           <span className={s.item_statis}>Total:{countTotalFeedback(state)}
+        
+          <span
+            className={s.item_statis} >Good:{good}
+          </span>
+          <span
+            className={s.item_statis}>Neutral:{neutral}
+          </span>
+          <span
+            className={s.item_statis}>Bad:{bad}
+          </span>
+           <span
+            className={s.item_statis}>Total:{total}
            </span>
            <span className={s.item_statis}>
-             Positive feedback:{countPositiveFeedbackPercentage(state.good,countTotalFeedback(state))}%
+             Positive feedback:{positivePercentage}%
              </span>
-     </div>
+        </div>
+        </>
      );
    
 };
